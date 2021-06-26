@@ -3,21 +3,15 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
-import org.gradle.kotlin.dsl.withType
 
 class BasePlugin: Plugin<Project> {
     override fun apply(target: Project) {
-        with(target.plugins) {
-            apply(Plugins.android_application)
-            apply(Plugins.kotlin_android)
-        }
-
         target.extensions.getByType(BaseExtension::class).apply {
             compileSdkVersion(30)
             buildToolsVersion("30.0.3")
 
             defaultConfig {
-                applicationId = "com.abbas.compose.shoppinglist"
+                //applicationId = "com.abbas.compose.shoppinglist"
                 targetSdkVersion(30)
                 minSdkVersion(23)
 
@@ -49,5 +43,13 @@ fun Project.enableCompose() {
             kotlinCompilerVersion = Libraries.Kotlin.version
         }
         buildFeatures.compose = true
+    }
+}
+
+fun Project.setApplicationId() {
+    extensions.getByType(BaseExtension::class).apply {
+        defaultConfig {
+            applicationId = "com.abbas.compose.shoppinglist"
+        }
     }
 }

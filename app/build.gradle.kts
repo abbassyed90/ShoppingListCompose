@@ -1,4 +1,6 @@
 plugins {
+    id(Plugins.android_application)
+    id(Plugins.kotlin_android)
     id("grocery-base-module")
 }
 
@@ -9,6 +11,7 @@ android {
     }
 }
 
+setApplicationId()
 enableCompose()
 
 dependencies {
@@ -21,4 +24,6 @@ dependencies {
 
     implementation(Libraries.Material.material)
     implementation(Libraries.AndroidX.lifecycle_runtime_ktx)
+
+    implementation(project(":theme"))
 }

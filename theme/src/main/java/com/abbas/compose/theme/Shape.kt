@@ -1,4 +1,4 @@
-package com.abbas.compose.shoppinglist.ui.theme
+package com.abbas.compose.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
