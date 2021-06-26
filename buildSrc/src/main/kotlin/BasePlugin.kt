@@ -11,7 +11,6 @@ class BasePlugin: Plugin<Project> {
             buildToolsVersion("30.0.3")
 
             defaultConfig {
-                //applicationId = "com.abbas.compose.shoppinglist"
                 targetSdkVersion(30)
                 minSdkVersion(23)
 

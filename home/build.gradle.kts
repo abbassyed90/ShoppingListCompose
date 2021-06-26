@@ -1,5 +1,5 @@
 plugins {
-    id(Plugins.android_application)
+    id(Plugins.android_library)
     id(Plugins.kotlin_android)
     id("grocery-base-module")
 }
@@ -7,24 +7,17 @@ plugins {
 android {
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
 }
 
-setApplicationId()
 enableCompose()
 
 dependencies {
     implementation(Libraries.AndroidX.core_ktx)
     implementation(Libraries.AndroidX.app_compat)
+    implementation(Libraries.Material.material)
+
     implementation(Libraries.Compose.ui)
     implementation(Libraries.Compose.material)
     implementation(Libraries.Compose.tooling)
-    implementation(Libraries.AndroidX.activity_compose)
-
-    implementation(Libraries.Material.material)
-    implementation(Libraries.AndroidX.lifecycle_runtime_ktx)
-
-    implementation(project(":theme"))
-    implementation(project(":home"))
 }
