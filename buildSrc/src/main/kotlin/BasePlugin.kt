@@ -6,6 +6,9 @@ import org.gradle.kotlin.dsl.getByType
 
 class BasePlugin: Plugin<Project> {
     override fun apply(target: Project) {
+        target.plugins.apply(Plugins.kotlin_kapt)
+        target.plugins.apply(Plugins.hilt)
+
         target.extensions.getByType(BaseExtension::class).apply {
             compileSdkVersion(30)
             buildToolsVersion("30.0.3")
@@ -31,6 +34,10 @@ class BasePlugin: Plugin<Project> {
 
         target.dependencies.apply {
             add("testImplementation", Libraries.JUnit.junit)
+
+            add("implementation",Libraries.Hilt.hilt)
+            add("kapt",Libraries.Hilt.hilt_compiler)
+
         }
     }
 }

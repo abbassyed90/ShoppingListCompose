@@ -28,4 +28,10 @@ object Libraries {
         const val junit = "junit:junit:4.13.2"
     }
 
+    object Hilt {
+        const val version = "2.35"
+        const val hilt = "com.google.dagger:hilt-android:${Libraries.Hilt.version}"
+        const val hilt_compiler = "com.google.dagger:hilt-android-compiler:${Libraries.Hilt.version}"
+    }
+
 }
