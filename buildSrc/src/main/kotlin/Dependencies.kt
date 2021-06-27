@@ -30,8 +30,16 @@ object Libraries {
 
     object Hilt {
         const val version = "2.35"
+
         const val hilt = "com.google.dagger:hilt-android:${Libraries.Hilt.version}"
         const val hilt_compiler = "com.google.dagger:hilt-android-compiler:${Libraries.Hilt.version}"
+    }
+
+    object Room {
+        const val version = "2.3.0-alpha02"
+
+        const val room_runtime = "androidx.room:room-runtime:$version"
+        const val room_ktx = "androidx.room:room-ktx:$version"
     }
 
 }
