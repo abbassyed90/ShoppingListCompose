@@ -20,4 +20,6 @@ dependencies {
     implementation(Libraries.Compose.ui)
     implementation(Libraries.Compose.material)
     implementation(Libraries.Compose.tooling)
+
+    implementation(project(":common"))
 }

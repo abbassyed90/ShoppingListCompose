@@ -27,4 +27,5 @@ dependencies {
 
     implementation(project(":theme"))
     implementation(project(":home"))
+    implementation(project(":common"))
 }

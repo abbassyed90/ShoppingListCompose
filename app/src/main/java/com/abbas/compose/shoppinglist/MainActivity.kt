@@ -3,36 +3,45 @@ package com.abbas.compose.shoppinglist
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.fragment.app.Fragment
+import com.abbas.compose.common.NavigationHost
+import com.abbas.compose.home.HomeFragment
 import com.abbas.compose.theme.ShoppingListTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity(), NavigationHost {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ShoppingListTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
+
+        // set start fragment
+        replaceFragment(HomeFragment.createInstance(), false)
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ShoppingListTheme {
-        Greeting("Android")
+    override fun replaceFragment(fragment: Fragment, addToBackStack: Boolean) {
+        val transaction = supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, fragment)
+
+        if (addToBackStack){
+            transaction.addToBackStack(fragment.toString())
+        }
+
+        transaction.commit()
+    }
+
+    override fun pop() {
+        supportFragmentManager.popBackStack()
     }
 }
